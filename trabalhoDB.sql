@@ -150,5 +150,26 @@ create index nome_cidade_idx on cidade (nome);
 create index codigo_ibge_idx on cidade (codigo_ibge);
 create index endereco_cidade_idx on endereco (codigo_cidade);
 create index cliente_endereco_idx on cliente (codigo_endereco);
--- Scripts de Criação das Restrições Default e Sequenciadores.
 
+-- Scripts de Criação das Restrições Default e Sequenciadores.
+create sequence seq_cliente_codigo start with 1;
+create sequence seq_despesas_codigo start with 1;
+create sequence seq_conta_codigo start with 1;
+create sequence seq_plano_codigo start with 1;
+create sequence seq_moeda_codigo start with 1;
+create sequence seq_receita_codigo start with 1;
+create sequence seq_endereco_codigo start with 1;
+create sequence seq_estado_codigo start with 1;
+create sequence seq_cidade_codigo start with 1;
+create sequence seq_historico_codigo start with 1;
+
+alter table cliente alter column codigo_cliente set default nextval('seq_cliente_codigo');
+alter table despesas alter column codigo_despesa set default nextval('seq_despesas_codigo');
+alter table conta alter column id_conta set default nextval('seq_conta_codigo');
+alter table plano alter column id_plano set default nextval('seq_plano_codigo');
+alter table moeda alter column codigo_moeda set default nextval('seq_moeda_codigo');
+alter table receita alter column codigo_receita set default nextval('seq_receita_codigo');
+alter table endereco alter column codigo_endereco set default nextval('seq_endereco_codigo');
+alter table estado alter column codigo_estado set default nextval('seq_estado_codigo');
+alter table cidade alter column codigo_cidade set default nextval('seq_cidade_codigo');
+alter table historico alter column codigo_historico set default nextval('seq_historico_codigo');
