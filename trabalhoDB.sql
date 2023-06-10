@@ -11,14 +11,14 @@ create table historico_pagamento (
 	codigo_historico int not null,
 	codigo_conta int not null,
 	descricacao varchar(100) not null,
-	forma_pagamento varchar(1) not null, -- 'D', 'C', 'D', 'P'
+	forma_pagamento varchar(1) not null, 
 	plano_desejado varchar(20)
 );
 
 create table plano (
 	id_plano int not null,
 	nome_resumido varchar(100) not null,
-	forma_pagamento varchar(1) not null, -- 'D', 'C', 'D', 'P'
+	forma_pagamento varchar(1) not null, 
 	plano_desejado varchar(20) not null
 );
 
@@ -95,16 +95,26 @@ alter table cliente add constraint codigo_cliente primary key (codigo_cliente);
 alter table conta add constraint id_conta primary key (id_conta);
 
 -- Scripts de Criação das Chaves Estrangeiras
-alter table despesas add constraint codigo_conta foreign key (codigo_conta)  references conta (id_conta);
-alter table receita add constraint codigo_conta foreign key (codigo_conta)  references conta (id_conta);
-alter table historico_pagamento add constraint codigo_conta foreign key (codigo_conta)  references conta (id_conta);
-alter table cliente add constraint codigo_endereco foreign key (codigo_endereco) references endereco(codigo_endereco);
-alter table cliente add constraint codigo_plano foreign key (codigo_plano) references plano(id_plano);
-alter table conta add constraint codigo_moeda foreign key (codigo_moeda) references moeda (codigo_moeda);
-alter table cidade add constraint codigo_estado foreign key (codigo_estado)  references estado (codigo_estado);
-alter table endereco add constraint codigo_cidade foreign key (codigo_cidade)  references cidade (codigo_cidade);
-alter table conta add constraint codigo_receita foreign key (codigo_receita) references receita (codigo_receita);
-alter table conta add constraint codigo_cliente foreign  key (codigo_cliente) references cliente (codigo_cliente);
+alter table despesas add constraint codigo_conta foreign key (codigo_conta)  
+	references conta (id_conta);
+alter table receita add constraint codigo_conta foreign key (codigo_conta)  
+	references conta (id_conta);
+alter table historico_pagamento add constraint codigo_conta foreign key (codigo_conta)  
+	references conta (id_conta);
+alter table cliente add constraint codigo_endereco foreign key (codigo_endereco) 
+	references endereco(codigo_endereco);
+alter table cliente add constraint codigo_plano foreign key (codigo_plano) 
+	references plano(id_plano);
+alter table conta add constraint codigo_moeda foreign key (codigo_moeda) 
+	references moeda (codigo_moeda);
+alter table cidade add constraint codigo_estado foreign key (codigo_estado)  
+	references estado (codigo_estado);
+alter table endereco add constraint codigo_cidade foreign key (codigo_cidade) 
+	references cidade (codigo_cidade);
+alter table conta add constraint codigo_receita foreign key (codigo_receita) 
+	references receita (codigo_receita);
+alter table conta add constraint codigo_cliente foreign  key (codigo_cliente) 
+	references cliente (codigo_cliente);
 -- Scripts de Criação das Restrições Unique, Check e Index.
 
 alter table cliente add constraint cliente_codigo_uk unique (codigo_cliente);
